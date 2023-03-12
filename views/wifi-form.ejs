@@ -5,15 +5,18 @@
 </head>
 <body>
     <h1>Please enter your Wifi information</h1>
-    <form action="/qr-code" method="POST">
-        <div>
-            <label for="name">Your wifi name</label>
-            <input type="text" name="wifiName" id="wifiName">
-        </div>
-        <div>
-            <label for="passwd">Wifi password</label>
-            <input type="text" name="wifiPwd" id="wifiPwd" label="Wifi password">
-        </div>
-        <button type="submit">Generate QR code</button>
-    </form>
+    <div>
+        <form action="/qr-code" method="POST">
+            <div>
+                <label for="name">Your wifi name</label>
+                <input type="text" name="wifiName" id="wifiName">
+            </div>
+            <div>
+                <label for="passwd">Wifi password</label>
+                <input type="text" name="wifiPwd" id="wifiPwd" label="Wifi password">
+            </div>
+            <button type="submit">Generate QR code</button>
+        </form>
+        <%- include('./footer.ejs') %>
+    </div>
 </body>
