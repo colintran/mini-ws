@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Your QR code</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="centered">
+        <canvas id="qr-result"></canvas>
+    </div>
+    <script src="/build/qrcode.js"></script>
+    <script>
+    QRCode.toCanvas(document.getElementById('qr-result'), "<%= wifiStr %>", { version: 10 },function (error) {
+        if (error) console.error(error)
+        console.log('success!');
+    })
+    </script>
+    <div class="centered">
+        <form action="/">
+            <button type="submit">Back</button>
+        </form>
+    </div>
+</body>

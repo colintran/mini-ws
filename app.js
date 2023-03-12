@@ -8,14 +8,19 @@ app.set('view engine','ejs');
 const viewsPath = path.join(rootPath, 'views');
 app.set('views',viewsPath);
 // add static folder
-// app.use(express.static(path.join(rootPath, 'public')));
+app.use(express.static(path.join(rootPath, 'public')));
 
+const wifiUtil = require('./util/wifi');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
-const serverId = random.int((min=1), (max=10))
 router.get('/',(req,res,next) => {
-    res.render('index', {id: serverId});
-})
-
+    res.render('wifi-form');
+});
+router.post('/qr-code', (req,res,next) => {
+    let name = req.body.wifiName.trim();
+    let passwd = req.body.wifiPwd.trim();
+    console.log('name: ',name,'pass: ',passwd);
+    res.render('qr', {wifiStr: wifiUtil.generateWifiStr(name, passwd)});
+});
 app.use('/',router);
 app.listen(3000);
